@@ -13,10 +13,6 @@ $(document).ready(function () {
             searchTerm,
             startYear,
             endYear
-<<<<<<< HEAD
-=======
-
->>>>>>> 981b51c8b0dd0f0a33c8717e55a37446d8f0ac70
 
         });
         $.ajax({
