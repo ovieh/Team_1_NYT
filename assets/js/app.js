@@ -1,6 +1,6 @@
-            $(document).ready(function() {
+$(document).ready(function () {
 
-    $("#submit").on("click", function(event) {
+    $("#submit").on("click", function (event) {
         event.preventDefault();
 
         var numberOfRecords = "5";
@@ -10,24 +10,26 @@
         var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
         url += '?' + $.param({
             'api-key': "e8718dd97c2d4ed4b2555c6c310c1963",
-            searchTerm, startYear, endYear
+            searchTerm,
+            startYear,
+            endYear
 
 
         });
         $.ajax({
             url: url,
             method: 'GET',
-        }).done(function(result) {
+        }).done(function (result) {
             console.log(result);
             var dataArray = result.response.docs;
-            for (var i=0;i<dataArray.length;i++){
+            for (var i = 0; i < dataArray.length; i++) {
                 var articleDiv = $("<div>");
-                var articleTitleDiv = $("<div>"+ (i+1)+dataArray[i].headline.main+"</div>");
-                var authorDiv = $("<div>"+ (i+1)+dataArray[i].byline.original+"</div>");
-                var sectionDiv = $("<div>"+dataArray[i].section_name+"</div>");
-                var pubDateDiv = $("<div>"+dataArray[i].pub_date+"</div>");
+                var articleTitleDiv = $("<div>" + (i + 1) + dataArray[i].headline.main + "</div>");
+                var authorDiv = $("<div>" + (i + 1) + dataArray[i].byline.original + "</div>");
+                var sectionDiv = $("<div>" + dataArray[i].section_name + "</div>");
+                var pubDateDiv = $("<div>" + dataArray[i].pub_date + "</div>");
 
-                var hyperLinkDiv = $("<a href="+dataArray[i].web_url+">link text</a>");
+                var hyperLinkDiv = $("<a href=" + dataArray[i].web_url + ">link text</a>");
 
                 articleDiv.append(articleTitleDiv);
                 articleDiv.append(authorDiv);
@@ -36,13 +38,13 @@
                 articleDiv.append(hyperLinkDiv);
 
                 $("#article").append(articleDiv);
-                console.loog(articleDiv);
+                console.log(articleDiv);
 
             }
 
 
 
-        }).fail(function(err) {
+        }).fail(function (err) {
             throw err;
         });
 
